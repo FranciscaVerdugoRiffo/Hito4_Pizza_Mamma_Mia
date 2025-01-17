@@ -18,7 +18,7 @@ function App() {
             <Navbar />
             {/*<Header />*/}
               <main >
-                {<Home />
+                <Home />
                 {/*<Register />*/}
                 {/*<Login />*/}
                 <Cart />
