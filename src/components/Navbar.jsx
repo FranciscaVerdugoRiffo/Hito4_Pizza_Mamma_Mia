@@ -1,12 +1,12 @@
 import React from 'react';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../context/CartContext'; // Asegúrate de importar el hook
 
 const Navbar = () => {
-  const { total } = useCart();
-  const token = false; 
+  const { total } = useCart(); // Accedemos al total desde el contexto
+  const token = false;
 
-  const formatCurrency = (amount) =>
-    amount.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
+  // Si el total es undefined, lo asignamos a 0
+  const formattedTotal = total ? total.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' }) : '0';
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -14,7 +14,6 @@ const Navbar = () => {
         <p className="navbar-text text-white me-4 fs-4 mb-0">Pizzería Mamma Mia!</p>
         <div className="d-flex">
           <button className="btn btn-outline-secondary text-white border-white me-2">🍕 Home</button>
-          
           {token ? (
             <>
               <button className="btn btn-outline-secondary text-white border-white me-2">🔓 Profile</button>
@@ -28,7 +27,7 @@ const Navbar = () => {
           )}
         </div>
         <div className="d-flex ms-auto">
-          <button className="btn btn-outline-info text-info border-info"> 🛒 Total: {formatCurrency(total)}</button>
+          <button className="btn btn-outline-info text-info border-info"> 🛒 Total: {formattedTotal}</button>
         </div>
       </div>
     </nav>

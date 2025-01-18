@@ -1,11 +1,12 @@
 import React, { createContext, useState, useContext } from "react";
 
-export const CartContext = createContext(); // Se crea el contexto
+// Crear el contexto para el carrito
+export const CartContext = createContext();
 
-const CartProvider = ({ children }) => { //Se crea un proveedor para el contexto
-  const [cart, setCart] = useState([]);//Estado global del carrito de compras
+const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]); // Estado global del carrito
 
-  const addToCart = (product) => { //Función para agregar productos al carrito
+  const addToCart = (product) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
       if (existingProduct) {
@@ -19,7 +20,7 @@ const CartProvider = ({ children }) => { //Se crea un proveedor para el contexto
     });
   };
 
-  const removeFromCart = (productId) => { //Función para eliminar productos del carrito
+  const removeFromCart = (productId) => {
     setCart((prevCart) =>
       prevCart
         .map((item) =>
@@ -31,7 +32,7 @@ const CartProvider = ({ children }) => { //Se crea un proveedor para el contexto
     );
   };
 
-  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0); //Función para el calcular el total del carrito
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0); // Calcular el total del carrito
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, total }}>
@@ -40,6 +41,8 @@ const CartProvider = ({ children }) => { //Se crea un proveedor para el contexto
   );
 };
 
-export const useCart = () => useContext(CartContext); //Este es el Hook para consumir el contexto creado
+// Custom hook para usar el CartContext
+export const useCart = () => useContext(CartContext);
 
 export default CartProvider;
+

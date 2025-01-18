@@ -3,8 +3,8 @@ import { useState } from 'react';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
-  const [error, setError] = useState(""); // Mensaje de error
-  const [success, setSuccess] = useState(""); // Mensaje de éxito
+  const [error, setError] = useState(""); 
+  const [success, setSuccess] = useState(""); 
 
   // Función para validar los datos antes de enviar el formulario
   const validarDatos = (e) => {
